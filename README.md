@@ -45,3 +45,4 @@ TODO:
 * File browser for your puter
 * Possibly a mongo service for uploading .md notes
 * Add soem goddamn CSS up in here (I think I'm gonna try Pure CSS this time around)
+* I'm thinking about making another filter that creates a set of links for your reference-style links that actually appear on the page. I mean, why the hell not? Seriously, why the hell don't reference links show up? It's annoying. It would be nice when you are writing a document with superior knowledges for the refs to all be in one place. Like an appendix in a real book! Gwarsh, what a thought.
