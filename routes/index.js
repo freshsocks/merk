@@ -39,14 +39,26 @@ var definitionList = {
 	dd : /(?:(^:\s)(.*(?=<\/p>)|.*$)(<\/p>)?)/gm,
 	dl : /((?:^(<dt).*>[\n|\r]+|(?:<dd>.*<\/dd>)[\n\r]+)+(?![\r\n\S]*<dt>|[\r\n\S]+<dd>))/gm
 };
+var refLinkRegex = /^\[(.+)\]:\s(.+)(?=\s"(.+)"$|\s?$)/gm;
 var md;
 var file = "/Users/stevefloat/Documents/notes/car-computers.md";
 
 exports.index = function(req, res){
-	fs.readFile(file, {encoding: "utf8"}, function(err, file){ 
+	fs.readFile(file, {encoding: "utf8"}, function(err, fileOutput){ 
 		if (err) errorHandler(err);
-		console.log("File Read Successfully.");
-		marked(file, markedOps, function (err, content) {
+		var preformat = fileOutput.replace(refLinkRegex, function($0, $1, $2, $3){
+			console.log('preformatting');
+			// $0	Whole line
+			// $1	Reference Text
+			// $2	URL (not verified, use relative links or whatever)
+			// $3	Title text
+			var title = $3 ? $3 : $1; // Set Title to label if there is no alt specified
+			var referenceLink = '<a href="'+$2+'" title="'+title+'" target="_blank">'+$1+'</a>';
+			var referenceString = $0+'\n'+referenceLink;
+			//console.log("$3 "+$3+";\n$2 "+$2+";\n$1 "+$1+";\n$0 "+$0+";");
+			return referenceString;
+		});
+		marked(preformat, markedOps, function (err, content) {
 			if (err) errorHandler(err);
 			console.log("markdown conversion successful");
 			var formatted = content.replace(definitionList.dt, function($0, $1, $2){
