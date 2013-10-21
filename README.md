@@ -3,9 +3,9 @@ merk
 
 A markdown viewer for mah notes.
 
-_New! Version 0.0.2!_
+_New! Version 0.0.3!_
 
-Now you can **Actually look at markdown!**
+Now you can **Actually look at markdown**, even though I still need to change the path and upload some actual markdown files as test dummies.
 
 Also, I made my first markdown filter using insanely calculated regex. It literally took me 12 hours to write 3 different regex functions, but boy did I learn a lot!
 
@@ -30,7 +30,7 @@ var definitionList = {
 
 Oh, heres how you write a definition list:
 
-## Markdown Definition Lists
+## Markdown Definition Lists Filter
 
 ```
 Term
@@ -43,8 +43,22 @@ Turms
 
 I was looking at a markdown cheatsheet somewhere on the webs and somebody was like "HEY MAN YOU CAN DO DEF LISTS LIKE THIS! PYEEEWW!!!" and I was like "OH SHIT DAT SWEET" and started taking all my notes like that and then realized I have no idea who supports it. Since theres no one with as mightyfine of a md library as marked for node.js, I thought I'd just write it in myself.
 
+## Markdown Reference Links Filter
+
+Now reference links actually appear at the bottom of your page! This filter is always on at this point in time. Gimme a break I just made this 5 seconds ago.
+
+Same syntax for ref links as always:
+```
+Here's an [in-text reference] that is defined elsewhere
+------
+# References
+[in-text reference]: some://link.derp "optional titleybob"
+[now its going to]: show.up.inalist.too "WOOOO!!!"
+
+```
 ## TODO:
 * File browser for your puter
 * Possibly a mongo service for uploading .md notes
 * Add soem goddamn CSS up in here (I think I'm gonna try Pure CSS this time around)
-* I'm thinking about making another filter that creates a set of links for your reference-style links that actually appear on the page. I mean, why the hell not? Seriously, why the hell don't reference links show up? It's annoying. It would be nice when you are writing a document with superior knowledges for the refs to all be in one place. Like an appendix in a real book! Gwarsh, what a thought.
+* ~~I'm thinking about making another filter that creates a set of links for your reference-style links that actually appear on the page. I mean, why the hell not? Seriously, why the hell don't reference links show up? It's annoying. It would be nice when you are writing a document with superior knowledges for the refs to all be in one place. Like an appendix in a real book! Gwarsh, what a thought.~~
+	* Still got some ideas on how to improve this. It works perfectly fine now, I just want to extend it a little bit.
