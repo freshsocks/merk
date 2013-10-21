@@ -28,29 +28,39 @@ var highlight = require('highlight.js');
 var markedOps = {
 	highlight: function (code, lang) {
 		return highlight.highlightAuto(lang, code).value;
-	}
+	},
+	tables: true,
+	smartLists: true,
+	breaks: false
 };
 
+var definitionList = {
+	dt : /(^(?!:|#)(?:<p>|<[\w+\s?"?=?]+>)*([\w%$$]+.*)$)(?=[\r|\n]:\s\S)/gm,
+	dd : /(?:(^:\s)(.*(?=<\/p>)|.*$)(<\/p>)?)/gm,
+	dl : /((?:^(<dt).*>[\n|\r]+|(?:<dd>.*<\/dd>)[\n\r]+)+(?![\r\n\S]*<dt>|[\r\n\S]+<dd>))/gm
+};
+var md;
+var file = "/Users/stevefloat/Documents/notes/car-computers.md";
+
 exports.index = function(req, res){
-	// marked.setOptions({
-	// 	highlight: function (code, lang) {
-	// 		return hljs.highlightAuto(lang, code).value;
-	// 	}
-	// });
-	var note = fs.readFile("/Users/stevefloat/Documents/notes/car-computers.md", {encoding: "utf8"}, function(err, res){ 
-		if (err) throw err;
+	fs.readFile(file, {encoding: "utf8"}, function(err, file){ 
+		if (err) errorHandler(err);
 		console.log("File Read Successfully.");
-		return res;
+		marked(file, markedOps, function (err, content) {
+			if (err) errorHandler(err);
+			console.log("markdown conversion successful");
+			var formatted = content.replace(definitionList.dt, function($0, $1, $2){
+										return '<dt>'+$2+'</dt>';
+									}).replace(definitionList.dd, function($0, $1, $2){
+										return '<dd>'+$2+'</dd>';
+									}).replace(definitionList.dl, function($0, $1){
+										return '<dl>\n'+$1+'</dl>\n\n';
+									});
+			res.render("index", { title: "Markdown Viewer", md: formatted});
+		});
 	});
-	var md = marked("I am using __markdown__.", markedOps, function (err, content) {
-	  if (err) throw err;
-	  console.log(content);
-	  return content;
-	});
-	// var md = marked(note, function(err, content){
-	// 	if(err) throw err;
-	// 	console.log("Markdown Converted.");
-	// 	return content;
-	// });
-	res.render('index', { title: 'Markdown Viewer', md: md });
+
+	function errorHandler(err){
+		res.render('index', { title: err.message });
+	}
 };
