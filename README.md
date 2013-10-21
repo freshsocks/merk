@@ -48,14 +48,14 @@ I was looking at a markdown cheatsheet somewhere on the webs and somebody was li
 Now reference links actually appear at the bottom of your page! This filter is always on at this point in time. Gimme a break I just made this 5 seconds ago.
 
 Same syntax for ref links as always:
-```
-Here's an [in-text reference] that is defined elsewhere
-------
-# References
-[in-text reference]: some://link.derp "optional titleybob"
-[now its going to]: show.up.inalist.too "WOOOO!!!"
+>```
+>Here's an [in-text reference] that is defined elsewhere
+>------
+># References
+>[in-text reference]: some://link.derp "optional titleybob"
+>[now its going to]: show.up.inalist.too "WOOOO!!!"
+>```
 
-```
 ## TODO:
 * File browser for your puter
 * Possibly a mongo service for uploading .md notes
