@@ -43,11 +43,21 @@ var definitionList = {
 };
 var refLinkRegex = /^(?!!|\[!)\[(.+)\]:\s(.+)(?=\s"(.+)"$|\s?$)/gm;
 var md;
-var file = "/Users/stevefloat/Documents/notes/car-computers.md";
+var docPath = "/Users/stevefloat/Documents/notes/";
+var appPath = "/Users/stevefloat/git/merk/";
+var file = "car-computers.md";
 //var file = "/Users/stevefloat/git/merk/public/bower_components/pure/README.md";
 
 exports.index = function(req, res){
-	fs.readFile(file, {encoding: "utf8"}, function(err, fileOutput){ 
+
+	console.log("Params: "+req.params.doc);
+	var doc = req.params.doc;
+
+	doc = typeof doc==="undefined" ? docPath+file : doc=="README.md" ? appPath+doc : docPath+doc;
+
+	console.log("Doc preview: "+doc.split(0, 20));
+
+	fs.readFile(doc, {encoding: "utf8"}, function(err, fileOutput){ 
 		if (err) errorHandler(err);
 		//var preformat = fileOutput;
 		var preformat = fileOutput.replace(refLinkRegex, function($0, $1, $2, $3){

@@ -1,0 +1,26 @@
+{
+  "name": "merk",
+  "version": "0.0.3",
+  "homepage": "https://github.com/stevefloat/merk",
+  "description": "md viewer",
+  "keywords": [
+    "md",
+    "markdown"
+  ],
+  "authors": [
+    "steve mason"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pure": "~0.3.0"
+  }
+}

@@ -1,48 +1,81 @@
-@import url("http://fonts.googleapis.com/css?family=Raleway:400,700")
+@import url('http://fonts.googleapis.com/css?family=Raleway:400,700')
+@import 'lexer-styles'
+
+/* Page Vars */
+
+pageWidth = 800px
+pagePadding = 60px 85px 60px 100px
+
+container()
+	max-width pageWidth
+	margin 0 auto
+
+button()
+	padding 6px 11px
+	border-radius 2px
+	background #444
+	color #aaa
+	border-bottom 1px solid #222
+	font-size 0.8em
+	&:hover
+		background #555
+		color #bbb
+		border-bottom 1px solid #222
+	&:active
+		background #444
+		color #999
+		border-top 1px solid #222
 
 body
-	background: #e7e7e7
-	font-family: 'Raleway', sans-serif
+	background #e7e7e7 url('../images/shattered.png')
+	font-family 'Raleway' sans-serif
+
 a
-	color: #44aaee
+	color #44aaee
 	&:visited
-		color: #2299dd
+		color #2299dd
 	&:hover
-		color: #55bbff
+		color #55bbff
 
 header.top
-	width:100%
-	margin: 0
-	background: #333
+	width 100%
+	margin 0
+	background #333 url('../images/use_your_illusion.png')
 	h1
-		color: #69a
-		padding: 20px 0
-		max-width: 700px
-		margin: 0 auto
-		font-weight: normal
-		font-size: 1em
-		display: block
+		color #69a
+		padding 20px 0
+		container()
+		font-weight normal
+		font-size 1em
+		display block
+		.readme
+			float right
+			display none
+			margin 0 20px
+			button()
+		&:hover .readme
+			display inline-block
 #content
-	max-width: 800px
-	margin: 0 auto
-	background: #f1f1f1
-	padding: 60px 85px 60px 100px
-	display: block
+	container()
+	background #f1f1f1
+	padding 60px 85px 60px 100px
+	display block
 	h1:first-child
-		border-bottom: 4px solid #226677
-		padding: 10px 0 20px
+		border-bottom 6px solid #226677
+		padding 10px 0 20px
+		font-size 2em
 	h2
-		font-size: 2.2em
-		font-weight: normal
-		border-bottom: 1px solid #aaa
-		padding: 10px 0
+		font-size 2.2em
+		font-weight normal
+		border-bottom 1px solid #aaa
+		padding 10px 0
 	h3
-		padding: 10px 0 3px
-		margin: 20px 0
-		border-bottom: 1px dotted #dedede
-		color: #444
-		font-size: 1.3em
+		padding 10px 0 3px
+		margin 20px 0
+		border-bottom 1px dotted #dedede
+		color #444
+		font-size 1.3em
 dl
 	dt
-		padding: 6px 0
-		color: #444
+		padding 6px 0
+		color #444
