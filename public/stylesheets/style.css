@@ -17,6 +17,7 @@ code.lang-js .p {
   color: #333;
 }
 /* Page Vars */
+/* Colors */
 body {
   background: #e7e7e7 url("../images/shattered.png");
   font-family: 'Raleway' sans-serif;
@@ -42,18 +43,23 @@ header.top h1 {
   margin: 0 auto;
   font-weight: normal;
   font-size: 1em;
-  display: block;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+header.top h1 span {
+  margin: 5px 3px;
 }
 header.top h1 .readme {
-  float: right;
-  display: none;
-  margin: 0 20px;
   padding: 6px 11px;
   border-radius: 2px;
-  background: #444;
+  background: #333;
   color: #aaa;
+  border: 0 none;
   border-bottom: 1px solid #222;
   font-size: 0.8em;
+  margin: 5px 2px;
 }
 header.top h1 .readme:hover {
   background: #555;
@@ -65,8 +71,60 @@ header.top h1 .readme:active {
   color: #999;
   border-top: 1px solid #222;
 }
-header.top h1:hover .readme {
-  display: inline-block;
+header.top h1 .spacer {
+  flex: 1 1 auto;
+}
+header.top h1 #toggle-md {
+  padding: 6px 11px;
+  border-radius: 2px;
+  background: #333;
+  color: #aaa;
+  border: 0 none;
+  border-bottom: 1px solid #222;
+  font-size: 0.8em;
+  margin: 5px 2px;
+  align-self: flex-end;
+}
+header.top h1 #toggle-md:hover {
+  background: #555;
+  color: #bbb;
+  border-bottom: 1px solid #222;
+}
+header.top h1 #toggle-md:active {
+  background: #444;
+  color: #999;
+  border-top: 1px solid #222;
+}
+header.top h1 .show-files {
+  padding: 6px 11px;
+  border-radius: 2px;
+  background: #333;
+  color: #aaa;
+  border: 0 none;
+  border-bottom: 1px solid #222;
+  font-size: 0.8em;
+  margin: 5px 2px;
+  align-self: flex-end;
+}
+header.top h1 .show-files:hover {
+  background: #555;
+  color: #bbb;
+  border-bottom: 1px solid #222;
+}
+header.top h1 .show-files:active {
+  background: #444;
+  color: #999;
+  border-top: 1px solid #222;
+}
+header.top #file-browser {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s;
+}
+header.top #file-browser.active {
+  height: 500px;
+  overflow: scroll;
+  transition: height 0.4s;
 }
 #content {
   max-width: 800px;
@@ -75,7 +133,7 @@ header.top h1:hover .readme {
   padding: 60px 85px 60px 100px;
   display: block;
 }
-#content h1:first-child {
+#content > h1:first-child {
   border-bottom: 6px solid #267;
   padding: 10px 0 20px;
   font-size: 2em;
@@ -92,6 +150,111 @@ header.top h1:hover .readme {
   border-bottom: 1px dotted #dedede;
   color: #444;
   font-size: 1.3em;
+}
+#footer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+#raw-md {
+  display: block;
+  max-height: 0;
+  background: #333;
+  transition: max-height 0.4s;
+  overflow: hidden;
+  box-shadow: 0 -2px 2px #000 inset;
+}
+#raw-md.active {
+  max-height: 500px;
+  overflow: scroll;
+  transition: max-height 0.4s;
+}
+#raw-md section.content {
+  max-width: 800px;
+  margin: 0 auto;
+  margin: 0 auto;
+  font-family: 'Courier New', monospace;
+  background: transparent;
+  color: #de3;
+/*float left*/
+  padding: 20px 10px;
+  border: 0 none;
+}
+#raw-md section.content:focus {
+  outline: 0 none;
+}
+#raw-md section.content p {
+  color: #de3;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  min-height: 24px;
+}
+#raw-md section.content p .line-number {
+  flex: 0 1 auto;
+  min-width: 4%;
+  margin: 0;
+  padding: 0;
+}
+#raw-md section.content p pre.content {
+  flex: 1 1 auto;
+  margin: 1px 0 0 0;
+  padding: 1px 0 1px 10px;
+  background: transparent;
+  color: #de3;
+  border: 0 none;
+  border-left: 1px solid #660;
+}
+#raw-md section.content p pre.content:focus {
+  outline: 0 none;
+  background: #3e3e30;
+}
+#raw-md section.content p.active .line-number {
+  color: #333;
+  background: #de3;
+}
+header.md-options {
+  width: 100%;
+  background: #999;
+  height: 0px;
+  transition: height 0.4s;
+  overflow: hidden;
+}
+header.md-options.active {
+  height: 50px;
+  transition: height 0.4s;
+  overflow: hidden;
+  display: block;
+}
+header.md-options .options {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+  overflow: hidden;
+}
+header.md-options .options .apply-changes {
+  padding: 6px 11px;
+  border-radius: 2px;
+  background: #de3;
+  color: #aaa;
+  border: 0 none;
+  border-bottom: 1px solid #222;
+  font-size: 0.8em;
+  margin: 5px 2px;
+  color: #333;
+}
+header.md-options .options .apply-changes:hover {
+  background: #555;
+  color: #bbb;
+  border-bottom: 1px solid #222;
+}
+header.md-options .options .apply-changes:active {
+  background: #444;
+  color: #999;
+  border-top: 1px solid #222;
 }
 dl dt {
   padding: 6px 0;

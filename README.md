@@ -32,14 +32,14 @@ Oh, heres how you write a definition list:
 
 ## Markdown Definition Lists Filter
 
->```
-> Term
-> : Defintion
->
-> Turms
-> : Derfablerfa
-> : [You](suck://.com)
->```
+```md
+ Term
+ : Defintion
+
+ Turms
+ : Derfablerfa
+ : [You](suck://.com)
+```
 
 I was looking at a markdown cheatsheet somewhere on the webs and somebody was like "HEY MAN YOU CAN DO DEF LISTS LIKE THIS! PYEEEWW!!!" and I was like "OH SHIT DAT SWEET" and started taking all my notes like that and then realized I have no idea who supports it. Since theres no one with as mightyfine of a md library as marked for node.js, I thought I'd just write it in myself.
 
@@ -57,13 +57,21 @@ Same syntax for ref links as always:
 >```
 
 ## TODO
-* File browser for your puter
+* ~~File browser for your puter~~ _file browsing is currently set to a specific folder callsed 'notes' by a static server variable. It just uses a filesystem readdir._
+Some improvements to be made:
+	- Make an actual file browser that lets you open files from your system
+	- Set a default directory
+	- Support for subdiretories
+	- Support for images & other filetypes
 * Possibly a mongo service for uploading .md notes
 * ~~Add soem goddamn CSS up in here (I think I'm gonna try Pure CSS this time around)~~
 * ~~I'm thinking about making another filter that creates a set of links for your reference-style links that actually appear on the page. I mean, why the hell not? Seriously, why the hell don't reference links show up? It's annoying. It would be nice when you are writing a document with superior knowledges for the refs to all be in one place. Like an appendix in a real book! Gwarsh, what a thought.~~
-* Make parsing clientside
+* ~~Make parsing clientside~~
+* Save .md files onto system
+* Export PDFs
 
-## Upcoming Features
+## Possible Features
+* Some form of skinning and style modding
 * Improvements for References:
 	* Automatically format references with bullets, classed as "reference"
 	* Create references on the references (Whuuuuuuut) that link to each time the reference is used in the document
@@ -73,12 +81,13 @@ Same syntax for ref links as always:
 	* It would be based on your headings (h1, h2...), and could include an internal link that would jump you the the corresponding heading. This would require that an id with a slugged version of the heding text be applied to an id attribute on the heading.
 	* The other way to do it would be to use javascript to target the nth-element. This is fine, but I'd like to avoid javascript on the client side so that we can have it function on purely html markup.
 * Extended definitions
-	* If you have a definition list somewhere in your document, it would be really sweet if every time you mentioned a term that is defined in the <dl> somewhere else in the document, it would become internally hyperlinked to that definition term in the ```<dl>```.
+	* If you have a definition list somewhere in your document, it would be really sweet if every time you mentioned a term that is defined in the ```<dl>``` somewhere else in the document, it would become internally hyperlinked to that definition term in the ```<dl>```.
 	* this might be annoying because the page would jump to a totally different spot and you would lose the spot you were just reading. Another implementation of contextual definitions would be for each def. term to have a toolip with the definition appear on hover. During the parsing phase, this would require each contextual def. term to:
 		1. be declared by some sort of custom markdown syntax
 		2. be matched against each definition in the ```<dl>```
 		3. get the matching term's definition rendered in some sort of html attribute.
-	* One effective way to render this would be as an ```<a>``` tag which doesn't link to anything, but has a title attribute with the definition, and a custom class appended to it called something like "term".
+	* One effective way to render this would be as an anchor tag which doesn't link to anything, but has a title attribute with the definition, and a custom class appended to it called something like "term".
+	* **Alphabetized definitions** optionaaly placing each letter under its own subhead (A: Apple, Acorn... B: Bottle, Baby... C: Cat, Corn...)
 * Contextual heading references
-	* The same implementation of contextual references that is native to markdown could be used for headings as well. If a word is defined as a contextual reference, the parsing engine can search all of the headings for a match and convert the reference into an internal hyperlink.
-	* The way this is processed would be very similar to the table of contents, and would also require that each heading gets a slugged id attached to it.
+	* The same implementation of contextual references that is native to markdown could be used for headings as well. If a word is defined as a contextual (inline) reference, the parsing engine can search all of the headings for a match and convert the reference into an internal hyperlink.
+	* The way this is processed would be very similar to the table of contents, and would also require that each heading gets a slugged id attached to it. **I've discovered that marked applies a slugged ID to each of the headings by default, unless I did that myself at some point and totally forgot about it.** Either way, its already set up for heading refs and TOC.

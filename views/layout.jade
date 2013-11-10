@@ -1,12 +1,26 @@
 doctype 5
 html
 	head
-		title= title
+		title Merk
 		link(rel='stylesheet', href='http://yui.yahooapis.com/pure/0.3.0/pure-min.css')
 		link(rel='stylesheet', href='/stylesheets/baby-blue.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/components/highlightjs/styles/dark.css')
+		
 	body
 		header.top
-			h1 #{title} v0.0.3
+			h1 
+				span merk v0.0.3
 				a(href="README.md").readme README.md
+				span.spacer
+				a(href="#", id="toggle-md", class="toggle", trigger="#raw-md, header.md-options") Show Markdown
+				button(trigger="#file-browser").show-files.toggle Files
+			ul#file-browser
 		block content
+		script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+		script(src="/javascripts/main.js")
+		script(src="/javascripts/toggle.js")
+		script(src="/javascripts/split-by-lines.js")
+		script(src="/socket.io/socket.io.js")
+		script(src="/components/marked/lib/marked.js")
+		script(src="/components/highlightjs/highlight.pack.js")

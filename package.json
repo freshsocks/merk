@@ -11,6 +11,8 @@
     "jade": "*",
     "stylus": "*",
     "marked": "~0.2.9",
-    "pygmentize-bundled": "~2.1.0"
+    "pygmentize-bundled": "~2.1.0",
+    "socket.io": "~0.9.16",
+    "underscore": "~1.5.2"
   }
 }

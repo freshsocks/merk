@@ -1,4 +1,13 @@
 extends layout
 
 block content
-	#content!= md
+	header.md-options
+			.options
+				a(href="#" class="apply-changes pure-button") Apply Changes
+	#raw-md
+		section.content
+	#content
+	#footer
+		p
+			| This document was rendered by <a href="http://www.github.com/stevefloat/merk" target="_blank">merk</a>, utilizing the <a href="">marked</a> library.
+			| The markdown file used for this document adheres to the early implementation of merkbook, a custom markdown flavor made specifically for merk.
